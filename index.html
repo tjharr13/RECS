@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RECS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">RECS</div>
+    <nav>
+      <a href="#people">People</a>
+      <a href="#recommendations">Recommendations</a>
+      <a href="#following">Following</a>
+      <a href="#saved">Saved</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">The search engine for trusted taste</p>
+    <h1>Discover what interesting people recommend.</h1>
+    <p class="subtitle">
+      Search books, movies, podcasts, and articles recommended by experts,
+      celebrities, creators, athletes, investors, and trusted friends.
+    </p>
+
+    <div class="search-box">
+      <input 
+        id="searchInput" 
+        type="text" 
+        placeholder="Search people, books, movies, podcasts, articles..."
+      />
+      <button id="searchButton">Search</button>
+    </div>
+
+    <div class="category-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="Book">Books</button>
+      <button class="filter-btn" data-filter="Movie">Movies</button>
+      <button class="filter-btn" data-filter="Podcast">Podcasts</button>
+      <button class="filter-btn" data-filter="Article">Articles</button>
+    </div>
+  </section>
+
+  <main>
+    <section id="people" class="section">
+      <div class="section-header">
+        <h2>Featured People</h2>
+        <p>Follow the people whose taste you trust.</p>
+      </div>
+      <div id="peopleGrid" class="grid"></div>
+    </section>
+
+    <section id="personProfileSection" class="section hidden-section">
+      <div id="personProfile"></div>
+    </section>
+
+    <section id="recommendations" class="section">
+      <div class="section-header">
+        <h2>Recommended For You</h2>
+        <p>Books, movies, podcasts, and articles curated by trusted people.</p>
+      </div>
+      <div id="recommendationsGrid" class="grid"></div>
+    </section>
+
+    <section id="following" class="section">
+      <div class="section-header">
+        <h2>Following</h2>
+        <p>People you follow will appear here.</p>
+      </div>
+      <div id="followingGrid" class="grid"></div>
+    </section>
+
+    <section id="saved" class="section">
+      <div class="section-header">
+        <h2>Saved RECS</h2>
+        <p>Your saved recommendations will appear here.</p>
+      </div>
+      <div id="savedGrid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>RECS — Discover what trusted people recommend.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
