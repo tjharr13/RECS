@@ -9,20 +9,23 @@
 <body>
   <header class="navbar">
     <div class="logo">RECS</div>
+
     <nav>
       <a href="#people">People</a>
       <a href="#recommendations">Recommendations</a>
-      <a href="#following">Following</a>
-      <a href="#saved">Saved</a>
+      <a href="#lists" class="auth-only">Lists</a>
+      <a href="#submit" class="auth-only">Submit</a>
+      <a href="#pricing">Pricing</a>
+      <button id="logoutButton" class="nav-button auth-only">Log Out</button>
     </nav>
   </header>
 
   <section class="hero">
     <p class="eyebrow">The search engine for trusted taste</p>
-    <h1>Discover what interesting people recommend.</h1>
+    <h1>Discover what trusted people recommend.</h1>
     <p class="subtitle">
       Search books, movies, podcasts, and articles recommended by experts,
-      celebrities, creators, athletes, investors, and trusted friends.
+      creators, athletes, investors, celebrities, and people you trust.
     </p>
 
     <div class="search-box">
@@ -40,10 +43,74 @@
       <button class="filter-btn" data-filter="Movie">Movies</button>
       <button class="filter-btn" data-filter="Podcast">Podcasts</button>
       <button class="filter-btn" data-filter="Article">Articles</button>
+      <button id="verifiedOnlyButton" class="filter-btn" data-verified="false">Verified Only</button>
     </div>
   </section>
 
   <main>
+    <section id="authSection" class="section">
+      <div class="section-header">
+        <h2>Log in to personalize RECS</h2>
+        <p>Create an account to save recommendations, follow people, and build personal lists.</p>
+      </div>
+
+      <div class="auth-grid">
+        <form id="signupForm" class="auth-card">
+          <h3>Create Account</h3>
+          <label for="signupName">Full Name</label>
+          <input id="signupName" type="text" placeholder="Your name" required />
+
+          <label for="signupEmail">Email</label>
+          <input id="signupEmail" type="email" placeholder="you@example.com" required />
+
+          <label for="signupPassword">Password</label>
+          <input id="signupPassword" type="password" placeholder="Create a password" required />
+
+          <button type="submit">Sign Up</button>
+        </form>
+
+        <form id="loginForm" class="auth-card">
+          <h3>Log In</h3>
+          <label for="loginEmail">Email</label>
+          <input id="loginEmail" type="email" placeholder="you@example.com" required />
+
+          <label for="loginPassword">Password</label>
+          <input id="loginPassword" type="password" placeholder="Your password" required />
+
+          <button type="submit">Log In</button>
+        </form>
+      </div>
+
+      <p id="authMessage" class="message"></p>
+    </section>
+
+    <section id="dashboardSection" class="section auth-only">
+      <div class="dashboard-card">
+        <p class="eyebrow">Your dashboard</p>
+        <h2 id="userGreeting">Welcome back.</h2>
+        <p>Track your saved RECS, followed people, and personal lists.</p>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span id="statSaved">0</span>
+            <p>Saved RECS</p>
+          </div>
+          <div class="stat-card">
+            <span id="statFollowing">0</span>
+            <p>Following</p>
+          </div>
+          <div class="stat-card">
+            <span id="statLists">0</span>
+            <p>Lists</p>
+          </div>
+          <div class="stat-card">
+            <span id="statRecs">0</span>
+            <p>Total RECS</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="people" class="section">
       <div class="section-header">
         <h2>Featured People</h2>
@@ -58,13 +125,46 @@
 
     <section id="recommendations" class="section">
       <div class="section-header">
-        <h2>Recommended For You</h2>
-        <p>Books, movies, podcasts, and articles curated by trusted people.</p>
+        <h2>Recommendations</h2>
+        <p>Books, movies, podcasts, and articles with sources and trust badges.</p>
       </div>
       <div id="recommendationsGrid" class="grid"></div>
     </section>
 
-    <section id="following" class="section">
+    <section id="lists" class="section auth-only">
+      <div class="section-header">
+        <h2>Your Personal Lists</h2>
+        <p>Create lists like “Books I Want to Read” or “Movies Recommended by Filmmakers.”</p>
+      </div>
+
+      <form id="createListForm" class="admin-form">
+        <div class="form-grid">
+          <div>
+            <label for="listTitle">List Title</label>
+            <input id="listTitle" type="text" placeholder="Example: Books I Want to Read" required />
+          </div>
+
+          <div>
+            <label for="listPublic">Visibility</label>
+            <select id="listPublic">
+              <option value="false">Private</option>
+              <option value="true">Public</option>
+            </select>
+          </div>
+
+          <div class="full-width">
+            <label for="listDescription">Description</label>
+            <textarea id="listDescription" placeholder="What is this list for?"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Create List</button>
+      </form>
+
+      <div id="listsGrid" class="list-grid"></div>
+    </section>
+
+    <section id="following" class="section auth-only">
       <div class="section-header">
         <h2>Following</h2>
         <p>People you follow will appear here.</p>
@@ -72,19 +172,135 @@
       <div id="followingGrid" class="grid"></div>
     </section>
 
-    <section id="saved" class="section">
+    <section id="saved" class="section auth-only">
       <div class="section-header">
         <h2>Saved RECS</h2>
         <p>Your saved recommendations will appear here.</p>
       </div>
       <div id="savedGrid" class="grid"></div>
     </section>
+
+    <section id="submit" class="section auth-only">
+      <div class="section-header">
+        <h2>Submit a Recommendation</h2>
+        <p>Submit a sourced recommendation for review. Verified entries can later be added to the main database.</p>
+      </div>
+
+      <form id="submissionForm" class="admin-form">
+        <div class="form-grid">
+          <div>
+            <label for="submitPersonName">Person Name</label>
+            <input id="submitPersonName" type="text" placeholder="Example: Warren Buffett" required />
+          </div>
+
+          <div>
+            <label for="submitPersonField">Person Field</label>
+            <input id="submitPersonField" type="text" placeholder="Example: Investing" />
+          </div>
+
+          <div class="full-width">
+            <label for="submitPersonBio">Person Bio</label>
+            <textarea id="submitPersonBio" placeholder="Short bio of the person"></textarea>
+          </div>
+
+          <div>
+            <label for="submitRecTitle">Recommendation Title</label>
+            <input id="submitRecTitle" type="text" placeholder="Example: The Intelligent Investor" required />
+          </div>
+
+          <div>
+            <label for="submitRecType">Type</label>
+            <select id="submitRecType" required>
+              <option value="Book">Book</option>
+              <option value="Movie">Movie</option>
+              <option value="Podcast">Podcast</option>
+              <option value="Article">Article</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="submitCategory">Category</label>
+            <input id="submitCategory" type="text" placeholder="Investing, film, sports, startups..." />
+          </div>
+
+          <div>
+            <label for="submitExternalUrl">External Link</label>
+            <input id="submitExternalUrl" type="url" placeholder="Amazon, Spotify, IMDb, article link..." />
+          </div>
+
+          <div>
+            <label for="submitImageUrl">Image URL</label>
+            <input id="submitImageUrl" type="url" placeholder="Optional image or cover URL" />
+          </div>
+
+          <div class="full-width">
+            <label for="submitDescription">Description</label>
+            <textarea id="submitDescription" placeholder="What is this recommendation?"></textarea>
+          </div>
+
+          <div>
+            <label for="submitSourceTitle">Source Title</label>
+            <input id="submitSourceTitle" type="text" placeholder="Podcast, interview, article, social post..." />
+          </div>
+
+          <div>
+            <label for="submitSourceUrl">Source Link</label>
+            <input id="submitSourceUrl" type="url" placeholder="Link proving the recommendation" />
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit for Review</button>
+      </form>
+
+      <p id="submissionMessage" class="message"></p>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="section-header">
+        <h2>RECS Pro</h2>
+        <p>Subscriptions will come later once the product is ready for real users.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <p class="price">$0</p>
+          <ul>
+            <li>Search public recommendations</li>
+            <li>Follow people</li>
+            <li>Save RECS</li>
+            <li>Create personal lists</li>
+          </ul>
+          <button disabled>Current Plan</button>
+        </div>
+
+        <div class="pricing-card featured">
+          <h3>RECS Pro</h3>
+          <p class="price">Coming Soon</p>
+          <ul>
+            <li>Unlimited personal lists</li>
+            <li>Advanced discovery</li>
+            <li>Verified source trails</li>
+            <li>Weekly expert RECS</li>
+            <li>Early access to new profiles</li>
+          </ul>
+          <button disabled>Stripe Coming Soon</button>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <p>RECS — Discover what trusted people recommend.</p>
+    <div class="footer-links">
+      <a href="mailto:you@example.com">Contact</a>
+      <a href="#pricing">Privacy</a>
+      <a href="#pricing">Terms</a>
+      <a href="#pricing">Refund Policy</a>
+    </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="script.js"></script>
 </body>
 </html>
