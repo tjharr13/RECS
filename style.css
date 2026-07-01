@@ -24,7 +24,7 @@ body {
 
 .navbar {
   width: 100%;
-  padding: 22px 7%;
+  padding: 20px 7%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,14 +36,20 @@ body {
 }
 
 .logo {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 900;
   letter-spacing: -1px;
   color: var(--red);
 }
 
+nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
 nav a {
-  margin-left: 24px;
   text-decoration: none;
   color: var(--white);
   font-weight: 700;
@@ -53,8 +59,18 @@ nav a:hover {
   color: var(--red);
 }
 
+.nav-button {
+  padding: 9px 13px;
+  border: none;
+  border-radius: 12px;
+  background: var(--red);
+  color: var(--white);
+  font-weight: 900;
+  cursor: pointer;
+}
+
 .hero {
-  padding: 100px 7% 80px;
+  padding: 95px 7% 75px;
   text-align: center;
   background:
     radial-gradient(circle at top, rgba(229, 9, 20, 0.35), transparent 35%),
@@ -70,7 +86,7 @@ nav a:hover {
 }
 
 .hero h1 {
-  max-width: 950px;
+  max-width: 980px;
   margin: 0 auto;
   font-size: 68px;
   line-height: 1.02;
@@ -79,14 +95,14 @@ nav a:hover {
 }
 
 .subtitle {
-  max-width: 740px;
+  max-width: 760px;
   margin: 24px auto 36px;
   font-size: 20px;
   color: #cccccc;
 }
 
 .search-box {
-  max-width: 780px;
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   gap: 12px;
@@ -103,21 +119,29 @@ nav a:hover {
   color: var(--black);
 }
 
-.search-box input:focus {
+.search-box input:focus,
+.auth-card input:focus,
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
   border-color: var(--red);
   box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.18);
 }
 
+button,
 .search-box button,
 .filter-btn,
-.card button,
-.profile-actions button,
-.profile-rec-card button {
+.submit-btn {
   border: none;
   cursor: pointer;
   border-radius: 14px;
   font-weight: 900;
   transition: 0.2s ease;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 .search-box button {
@@ -127,7 +151,9 @@ nav a:hover {
   font-size: 16px;
 }
 
-.search-box button:hover {
+.search-box button:hover,
+.submit-btn:hover,
+.nav-button:hover {
   background: var(--dark-red);
 }
 
@@ -177,13 +203,25 @@ nav a:hover {
   margin-top: 6px;
 }
 
+.auth-grid,
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
 
-.card {
+.card,
+.auth-card,
+.pricing-card,
+.dashboard-card,
+.admin-form,
+.list-card {
   background: var(--white);
   color: var(--black);
   border: 1px solid #252525;
@@ -198,6 +236,68 @@ nav a:hover {
   box-shadow: 0 18px 45px rgba(229, 9, 20, 0.18);
 }
 
+.card h3,
+.auth-card h3,
+.pricing-card h3,
+.list-card h3 {
+  font-size: 23px;
+  margin-bottom: 8px;
+  color: var(--black);
+}
+
+.card p,
+.auth-card p,
+.pricing-card p,
+.list-card p {
+  color: #444;
+  margin-bottom: 14px;
+}
+
+.auth-card label,
+.admin-form label {
+  display: block;
+  font-weight: 900;
+  margin: 12px 0 8px;
+  color: var(--black);
+}
+
+.auth-card input,
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+  width: 100%;
+  padding: 15px 16px;
+  border: 1px solid #cccccc;
+  border-radius: 14px;
+  background: var(--white);
+  color: var(--black);
+  font-size: 15px;
+  outline: none;
+}
+
+.auth-card button,
+.card button,
+.pricing-card button,
+.list-card button {
+  padding: 11px 14px;
+  background: var(--black);
+  color: var(--white);
+  margin-top: 8px;
+}
+
+.auth-card button:hover,
+.card button:hover,
+.pricing-card button:hover,
+.list-card button:hover {
+  background: var(--red);
+}
+
+.message {
+  margin-top: 16px;
+  color: #ffb3b7;
+  font-weight: 800;
+}
+
 .badge {
   display: inline-block;
   padding: 6px 11px;
@@ -209,35 +309,30 @@ nav a:hover {
   margin-bottom: 12px;
 }
 
-.card h3 {
-  font-size: 23px;
-  margin-bottom: 8px;
-  color: var(--black);
+.status-verified {
+  background: #dbffe6;
+  color: #087a2e;
 }
 
-.card p {
-  color: #444;
-  margin-bottom: 14px;
+.status-needs-source {
+  background: #fff3cd;
+  color: #8a6400;
+}
+
+.status-manual-entry {
+  background: #e8e8ff;
+  color: #3333aa;
+}
+
+.status-user-submitted {
+  background: #eeeeee;
+  color: #444444;
 }
 
 .meta {
   font-size: 14px;
   color: #666;
   margin-bottom: 14px;
-}
-
-.card button,
-.profile-actions button,
-.profile-rec-card button {
-  padding: 11px 14px;
-  background: var(--black);
-  color: var(--white);
-}
-
-.card button:hover,
-.profile-actions button:hover,
-.profile-rec-card button:hover {
-  background: var(--red);
 }
 
 .card-actions {
@@ -273,6 +368,47 @@ nav a:hover {
   display: none;
 }
 
+.dashboard-card {
+  background:
+    radial-gradient(circle at top right, rgba(229, 9, 20, 0.22), transparent 30%),
+    #111111;
+  color: var(--white);
+}
+
+.dashboard-card h2 {
+  font-size: 40px;
+  color: var(--white);
+}
+
+.dashboard-card p {
+  color: #d0d0d0;
+}
+
+.stats-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  background: var(--white);
+  color: var(--black);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.stat-card span {
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--red);
+}
+
+.stat-card p {
+  color: #444;
+  font-weight: 800;
+}
+
 .profile-panel {
   background:
     radial-gradient(circle at top left, rgba(229, 9, 20, 0.35), transparent 30%),
@@ -282,11 +418,6 @@ nav a:hover {
   border-radius: 30px;
   padding: 38px;
   box-shadow: 0 18px 50px rgba(0,0,0,0.45);
-}
-
-.profile-panel .badge {
-  background: #ffe5e7;
-  color: var(--dark-red);
 }
 
 .profile-header {
@@ -309,12 +440,6 @@ nav a:hover {
   margin-top: 8px;
 }
 
-.profile-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
 .profile-recs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -328,19 +453,70 @@ nav a:hover {
   padding: 22px;
 }
 
-.profile-rec-card h3 {
-  font-size: 22px;
-  margin-bottom: 8px;
-  color: var(--black);
-}
-
-.profile-rec-card p {
-  color: #444;
-  margin-bottom: 14px;
-}
-
-.following-btn {
+.following-btn,
+.saved-btn {
   background: var(--red) !important;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.admin-form {
+  background: var(--white);
+}
+
+.admin-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.submit-btn {
+  margin-top: 24px;
+  padding: 15px 22px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 16px;
+}
+
+.list-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.list-items {
+  margin-top: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.list-item {
+  background: #f4f4f4;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.price {
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--red) !important;
+}
+
+.pricing-card ul {
+  margin: 18px 0;
+  padding-left: 20px;
+}
+
+.pricing-card.featured {
+  border: 2px solid var(--red);
 }
 
 footer {
@@ -351,12 +527,39 @@ footer {
   background: #080808;
 }
 
+.footer-links {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #cccccc;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--red);
+}
+
 @media (max-width: 900px) {
   .hero h1 {
     font-size: 44px;
   }
 
-  .grid {
+  nav {
+    display: none;
+  }
+
+  .grid,
+  .auth-grid,
+  .pricing-grid,
+  .form-grid,
+  .profile-recs,
+  .list-grid,
+  .stats-grid {
     grid-template-columns: 1fr;
   }
 
@@ -364,15 +567,7 @@ footer {
     flex-direction: column;
   }
 
-  nav {
-    display: none;
-  }
-
   .profile-header {
     flex-direction: column;
-  }
-
-  .profile-recs {
-    grid-template-columns: 1fr;
   }
 }
