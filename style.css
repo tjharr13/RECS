@@ -41,6 +41,10 @@ select {
   font-family: inherit;
 }
 
+.auth-only {
+  display: none;
+}
+
 .navbar {
   width: 100%;
   padding: 18px 7%;
