@@ -8,55 +8,93 @@
 </head>
 <body>
   <header class="navbar">
-    <div class="logo">RECS</div>
+    <a href="#" class="logo">RECS</a>
 
     <nav>
       <a href="#people">People</a>
-      <a href="#recommendations">Recommendations</a>
+      <a href="#recommendations">Explore</a>
       <a href="#lists" class="auth-only">Lists</a>
       <a href="#submit" class="auth-only">Submit</a>
       <a href="#pricing">Pricing</a>
+      <a href="#authSection" class="nav-login">Log In</a>
       <button id="logoutButton" class="nav-button auth-only">Log Out</button>
     </nav>
   </header>
 
   <section class="hero">
-    <p class="eyebrow">The search engine for trusted taste</p>
-    <h1>Discover what trusted people recommend.</h1>
-    <p class="subtitle">
-      Search books, movies, podcasts, and articles recommended by experts,
-      creators, athletes, investors, celebrities, and people you trust.
-    </p>
+    <div class="hero-content">
+      <p class="eyebrow">Trusted recommendations, not random algorithms</p>
+      <h1>Find what the people you trust are reading, watching, and listening to.</h1>
+      <p class="subtitle">
+        RECS is a search engine for books, movies, podcasts, and articles recommended by experts,
+        athletes, investors, creators, celebrities, and trusted friends.
+      </p>
 
-    <div class="search-box">
-      <input 
-        id="searchInput" 
-        type="text" 
-        placeholder="Search people, books, movies, podcasts, articles..."
-      />
-      <button id="searchButton">Search</button>
-    </div>
+      <div class="search-box">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search Warren Buffett, investing books, podcasts, movies..."
+        />
+        <button id="searchButton">Search</button>
+      </div>
 
-    <div class="category-buttons">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="Book">Books</button>
-      <button class="filter-btn" data-filter="Movie">Movies</button>
-      <button class="filter-btn" data-filter="Podcast">Podcasts</button>
-      <button class="filter-btn" data-filter="Article">Articles</button>
-      <button id="verifiedOnlyButton" class="filter-btn" data-verified="false">Verified Only</button>
+      <div class="category-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Book">Books</button>
+        <button class="filter-btn" data-filter="Movie">Movies</button>
+        <button class="filter-btn" data-filter="Podcast">Podcasts</button>
+        <button class="filter-btn" data-filter="Article">Articles</button>
+        <button id="verifiedOnlyButton" class="filter-btn" data-verified="false">Verified Only</button>
+      </div>
     </div>
   </section>
 
   <main>
+    <section class="section value-section">
+      <div class="section-header centered">
+        <p class="eyebrow">How RECS works</p>
+        <h2>Discovery built around taste, trust, and sources.</h2>
+      </div>
+
+      <div class="value-grid">
+        <div class="value-card">
+          <span>1</span>
+          <h3>Find trusted people</h3>
+          <p>Search experts, creators, athletes, investors, filmmakers, and cultural figures.</p>
+        </div>
+
+        <div class="value-card">
+          <span>2</span>
+          <h3>See what they recommend</h3>
+          <p>Explore books, movies, podcasts, and articles connected to real people.</p>
+        </div>
+
+        <div class="value-card">
+          <span>3</span>
+          <h3>Verify the source</h3>
+          <p>Each REC can include source links, verification badges, and context.</p>
+        </div>
+
+        <div class="value-card">
+          <span>4</span>
+          <h3>Build your library</h3>
+          <p>Save RECS, follow people, and create personal lists tied to your account.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="authSection" class="section">
       <div class="section-header">
-        <h2>Log in to personalize RECS</h2>
+        <p class="eyebrow">Your account</p>
+        <h2>Log in to personalize RECS.</h2>
         <p>Create an account to save recommendations, follow people, and build personal lists.</p>
       </div>
 
       <div class="auth-grid">
         <form id="signupForm" class="auth-card">
           <h3>Create Account</h3>
+
           <label for="signupName">Full Name</label>
           <input id="signupName" type="text" placeholder="Your name" required />
 
@@ -69,8 +107,9 @@
           <button type="submit">Sign Up</button>
         </form>
 
-        <form id="loginForm" class="auth-card">
+        <form id="loginForm" class="auth-card dark-card">
           <h3>Log In</h3>
+
           <label for="loginEmail">Email</label>
           <input id="loginEmail" type="email" placeholder="you@example.com" required />
 
@@ -86,23 +125,28 @@
 
     <section id="dashboardSection" class="section auth-only">
       <div class="dashboard-card">
-        <p class="eyebrow">Your dashboard</p>
-        <h2 id="userGreeting">Welcome back.</h2>
-        <p>Track your saved RECS, followed people, and personal lists.</p>
+        <div>
+          <p class="eyebrow">Your dashboard</p>
+          <h2 id="userGreeting">Welcome back.</h2>
+          <p>Track what you save, who you follow, and the lists you create.</p>
+        </div>
 
         <div class="stats-grid">
           <div class="stat-card">
             <span id="statSaved">0</span>
             <p>Saved RECS</p>
           </div>
+
           <div class="stat-card">
             <span id="statFollowing">0</span>
             <p>Following</p>
           </div>
+
           <div class="stat-card">
             <span id="statLists">0</span>
             <p>Lists</p>
           </div>
+
           <div class="stat-card">
             <span id="statRecs">0</span>
             <p>Total RECS</p>
@@ -113,9 +157,11 @@
 
     <section id="people" class="section">
       <div class="section-header">
-        <h2>Featured People</h2>
-        <p>Follow the people whose taste you trust.</p>
+        <p class="eyebrow">People</p>
+        <h2>Featured experts and tastemakers.</h2>
+        <p>Follow people whose taste you trust and explore their recommendations.</p>
       </div>
+
       <div id="peopleGrid" class="grid"></div>
     </section>
 
@@ -125,16 +171,19 @@
 
     <section id="recommendations" class="section">
       <div class="section-header">
-        <h2>Recommendations</h2>
-        <p>Books, movies, podcasts, and articles with sources and trust badges.</p>
+        <p class="eyebrow">Explore</p>
+        <h2>Recommendations with context.</h2>
+        <p>Search across people, titles, categories, types, sources, and verification status.</p>
       </div>
+
       <div id="recommendationsGrid" class="grid"></div>
     </section>
 
     <section id="lists" class="section auth-only">
       <div class="section-header">
-        <h2>Your Personal Lists</h2>
-        <p>Create lists like “Books I Want to Read” or “Movies Recommended by Filmmakers.”</p>
+        <p class="eyebrow">Personal library</p>
+        <h2>Your personal lists.</h2>
+        <p>Create lists like “Books I Want to Read,” “Movies Recommended by Filmmakers,” or “Best Investing Podcasts.”</p>
       </div>
 
       <form id="createListForm" class="admin-form">
@@ -166,24 +215,29 @@
 
     <section id="following" class="section auth-only">
       <div class="section-header">
-        <h2>Following</h2>
-        <p>People you follow will appear here.</p>
+        <p class="eyebrow">Following</p>
+        <h2>People you follow.</h2>
+        <p>Your followed experts and tastemakers will appear here.</p>
       </div>
+
       <div id="followingGrid" class="grid"></div>
     </section>
 
     <section id="saved" class="section auth-only">
       <div class="section-header">
-        <h2>Saved RECS</h2>
-        <p>Your saved recommendations will appear here.</p>
+        <p class="eyebrow">Saved</p>
+        <h2>Your saved RECS.</h2>
+        <p>Everything you save will appear here, tied to your real account.</p>
       </div>
+
       <div id="savedGrid" class="grid"></div>
     </section>
 
     <section id="submit" class="section auth-only">
       <div class="section-header">
-        <h2>Submit a Recommendation</h2>
-        <p>Submit a sourced recommendation for review. Verified entries can later be added to the main database.</p>
+        <p class="eyebrow">Contribute</p>
+        <h2>Submit a recommendation.</h2>
+        <p>Submit a sourced recommendation for review. Strong source links make RECS more trustworthy.</p>
       </div>
 
       <form id="submissionForm" class="admin-form">
@@ -255,10 +309,11 @@
       <p id="submissionMessage" class="message"></p>
     </section>
 
-    <section id="pricing" class="section">
-      <div class="section-header">
-        <h2>RECS Pro</h2>
-        <p>Subscriptions will come later once the product is ready for real users.</p>
+    <section id="pricing" class="section pricing-section">
+      <div class="section-header centered">
+        <p class="eyebrow">Pricing</p>
+        <h2>Start free. Pro comes later.</h2>
+        <p>RECS Pro will make sense once the database is stronger and users are getting clear value.</p>
       </div>
 
       <div class="pricing-grid">
@@ -270,28 +325,34 @@
             <li>Follow people</li>
             <li>Save RECS</li>
             <li>Create personal lists</li>
+            <li>Submit recommendations</li>
           </ul>
           <button disabled>Current Plan</button>
         </div>
 
         <div class="pricing-card featured">
+          <div class="plan-label">Coming Soon</div>
           <h3>RECS Pro</h3>
-          <p class="price">Coming Soon</p>
+          <p class="price">TBD</p>
           <ul>
-            <li>Unlimited personal lists</li>
-            <li>Advanced discovery</li>
+            <li>Advanced discovery filters</li>
+            <li>Unlimited lists</li>
             <li>Verified source trails</li>
-            <li>Weekly expert RECS</li>
+            <li>Weekly expert recommendation drops</li>
             <li>Early access to new profiles</li>
           </ul>
-          <button disabled>Stripe Coming Soon</button>
+          <button disabled>Stripe Later</button>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>RECS — Discover what trusted people recommend.</p>
+    <div>
+      <h3>RECS</h3>
+      <p>Discover what trusted people recommend.</p>
+    </div>
+
     <div class="footer-links">
       <a href="mailto:you@example.com">Contact</a>
       <a href="#pricing">Privacy</a>
