@@ -317,10 +317,15 @@ async function loadLists() {
 
 function updateAuthUI() {
   const authOnlySections = document.querySelectorAll(".auth-only");
+  const navLogin = document.querySelector(".nav-login");
 
   authOnlySections.forEach(section => {
     section.style.display = appState.user ? "" : "none";
   });
+
+  if (navLogin) {
+    navLogin.style.display = appState.user ? "none" : "";
+  }
 
   elements.authSection.style.display = appState.user ? "none" : "block";
 
